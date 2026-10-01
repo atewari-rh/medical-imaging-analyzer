@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medical-imaging-analyzer"
+version = "0.1.0"
+description = "Privacy-first medical image analysis tool"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache License 2.0"}
+authors = [
+    {name = "Medical Imaging Analyzer Contributors"}
+]
+keywords = ["medical-imaging", "healthcare", "AI", "analysis", "privacy"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "numpy>=1.24.0",
+    "Pillow>=10.0.0",
+    "scikit-image>=0.21.0",
+    "click>=8.1.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.9.0",
+    "flake8>=6.1.0",
+    "mypy>=1.5.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/medical-imaging-analyzer/mia"
+Documentation = "https://mia-docs.example.com"
+Repository = "https://github.com/medical-imaging-analyzer/mia.git"
+"Bug Tracker" = "https://github.com/medical-imaging-analyzer/mia/issues"
+
+[project.scripts]
+mia = "mia.cli:cli"
+
+[tool.black]
+line-length = 100
+target-version = ['py39']
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=mia --cov-report=html"
