@@ -348,6 +348,8 @@ except Exception as e:
 - JPEG (.jpg, .jpeg)
 - TIFF (.tiff, .tif)
 - BMP (.bmp)
+- JPEG 2000 (.jp2, .j2k)
+- WebP (.webp)
 
 ## Performance Considerations
 

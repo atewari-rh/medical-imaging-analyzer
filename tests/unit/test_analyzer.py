@@ -83,3 +83,16 @@ def test_analyze_result_to_json(analyzer, sample_image_path):
     assert isinstance(json_str, str)
     assert "image_path" in json_str
     assert "predictions" in json_str
+
+
+def test_batch_analyze_accepts_new_extensions(analyzer, tmp_path):
+    """the new jpeg2000/webp extensions are picked up by batch_analyze"""
+    for name in ("scan.webp", "scan.jp2", "scan.j2k", "notes.txt"):
+        (tmp_path / name).write_bytes(b"")
+
+    results = analyzer.batch_analyze(str(tmp_path), "chest-xray")
+    processed = [Path(r.image_path).name for r in results]
+
+    for name in ("scan.webp", "scan.jp2", "scan.j2k"):
+        assert name in processed
+    assert "notes.txt" not in processed
