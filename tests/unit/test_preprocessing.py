@@ -55,3 +55,15 @@ def test_enhance_contrast(preprocessor, sample_image):
     """Test contrast enhancement"""
     enhanced = preprocessor._enhance_contrast(sample_image)
     assert enhanced.size == sample_image.size
+
+
+def test_preprocessor_handles_webp_image(tmp_path, preprocessor):
+    """A WebP file goes through the same pipeline as the others"""
+    img = Image.new('L', (512, 512), color=128)
+    webp_path = tmp_path / "sample.webp"
+    img.save(webp_path, "WEBP")
+
+    result = preprocessor.process(Image.open(webp_path).convert("L"))
+
+    assert result.shape == (256, 256)
+    assert result.dtype == np.float32
