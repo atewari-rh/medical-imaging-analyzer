@@ -149,28 +149,28 @@ class ModelLoader:
             "description": "Chest X-ray classification",
             "accuracy": 0.95,
             "status": "production",
-            "supported_formats": ["PNG", "JPG", "TIFF"],
+            "supported_formats": ["PNG", "JPG", "TIFF", "JPEG2000", "WebP"],
             "input_size": (256, 256)
         },
         "ct-lung": {
             "description": "CT lung nodule detection",
             "accuracy": 0.92,
             "status": "production",
-            "supported_formats": ["PNG", "JPG", "TIFF"],
+            "supported_formats": ["PNG", "JPG", "TIFF", "JPEG2000", "WebP"],
             "input_size": (256, 256)
         },
         "ultrasound-ab": {
             "description": "Abdominal ultrasound analysis",
             "accuracy": 0.88,
             "status": "beta",
-            "supported_formats": ["PNG", "JPG"],
+            "supported_formats": ["PNG", "JPG", "JPEG2000", "WebP"],
             "input_size": (256, 256)
         },
         "fracture-detect": {
             "description": "Fracture detection in X-rays",
             "accuracy": 0.90,
             "status": "beta",
-            "supported_formats": ["PNG", "JPG", "TIFF"],
+            "supported_formats": ["PNG", "JPG", "TIFF", "JPEG2000", "WebP"],
             "input_size": (256, 256)
         }
     }

@@ -153,7 +153,7 @@ class ImageAnalyzer:
         results = []
         
         # Supported image formats
-        image_extensions = {'.png', '.jpg', '.jpeg', '.tiff', '.bmp'}
+        image_extensions = {'.png', '.jpg', '.jpeg', '.tiff', '.bmp', '.jp2', '.j2k', '.webp'}
         
         for image_file in image_path.iterdir():
             if image_file.suffix.lower() in image_extensions:

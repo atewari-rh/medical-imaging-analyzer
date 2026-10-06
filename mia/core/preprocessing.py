@@ -9,9 +9,25 @@ from typing import Tuple
 
 logger = logging.getLogger(__name__)
 
+# Supported image formats
+SUPPORTED_FORMATS = {
+    '.png', '.jpg', '.jpeg', '.tiff', '.tif', '.bmp',
+    '.jp2', '.j2k', '.j2c',  # JPEG2000
+    '.webp',  # WebP
+}
+
 
 class ImagePreprocessor:
     """Handles medical image preprocessing"""
+    
+    SUPPORTED_FORMATS = SUPPORTED_FORMATS
+    
+    @classmethod
+    def is_format_supported(cls, file_path: str) -> bool:
+        """Check if a file format is supported."""
+        from pathlib import Path
+        ext = Path(file_path).suffix.lower()
+        return ext in cls.SUPPORTED_FORMATS
     
     def __init__(
         self,
